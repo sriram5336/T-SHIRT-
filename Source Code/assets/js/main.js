@@ -855,7 +855,7 @@ function renderProducts() {
           <button class="wishlist-btn ${isWishlisted ? 'active' : ''}" onclick="toggleWishlist(${product.id}, event)" title="Add to Wishlist">
             <i class="${isWishlisted ? 'ri-heart-fill' : 'ri-heart-line'}"></i>
           </button>
-          <img src="${product.image}" alt="${product.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=60'">
+          <img src="${product.image}" alt="${product.title}" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=60'">
           <div class="card-overlay">
             <button class="overlay-btn btn-quickview" onclick="openQuickViewModal(${product.id})">
               <i class="ri-eye-line"></i> Quick View

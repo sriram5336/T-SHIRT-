@@ -1,4 +1,4 @@
-/* SmartBill Apparel - White Transparent Glassmorphism Design System */
+/* SmartBill Apparel - White Transparent Glassmorphism Design System (High Performance 60FPS) */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
@@ -40,7 +40,7 @@
   --shadow-lg: 0 25px 60px rgba(0, 0, 0, 0.12);
   --shadow-glow: 0 0 30px var(--primary-glow);
   
-  --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -60,10 +60,11 @@ body {
     radial-gradient(circle at 10% 10%, rgba(199, 210, 254, 0.5) 0%, transparent 45%),
     radial-gradient(circle at 90% 25%, rgba(243, 232, 255, 0.6) 0%, transparent 50%),
     radial-gradient(circle at 50% 85%, rgba(209, 250, 229, 0.5) 0%, transparent 55%);
-  background-attachment: fixed;
+  background-attachment: scroll; /* Prevents heavy mobile scroll repaints */
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Typography */
@@ -146,6 +147,7 @@ button {
   border-bottom: 1px solid rgba(255, 255, 255, 0.8);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   transition: var(--transition);
+  transform: translateZ(0);
 }
 
 .navbar-inner {
@@ -635,10 +637,11 @@ button {
 }
 
 .filter-pill.active {
-  background: linear-gradient(135deg, var(--primary), #4f46e5);
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
+  background: linear-gradient(135deg, var(--primary), #4f46e5) !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35) !important;
+  font-weight: 700;
 }
 
 .sort-select {
@@ -703,7 +706,7 @@ button {
   gap: 28px;
 }
 
-/* White Transparent Glass Product Card */
+/* High Performance White Transparent Glass Product Card */
 .product-card {
   background: rgba(255, 255, 255, 0.68);
   backdrop-filter: var(--spatial-blur);
@@ -717,6 +720,10 @@ button {
   display: flex;
   flex-direction: column;
   box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.05), inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 380px;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .product-card:hover {
@@ -1514,7 +1521,7 @@ footer {
   font-size: 13px;
 }
 
-/* Responsive Breakpoints */
+/* High Performance Mobile Responsive Breakpoints (Smooth 60FPS) */
 @media (max-width: 1024px) {
   .hero-grid, .business-grid {
     grid-template-columns: 1fr;
@@ -1528,6 +1535,10 @@ footer {
 }
 
 @media (max-width: 768px) {
+  body {
+    background-attachment: scroll !important;
+  }
+
   .container {
     padding: 0 16px;
   }
@@ -1544,7 +1555,7 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  /* 2 T-shirt cards per row on mobile with White Transparent Glass Design */
+  /* 2 T-shirt cards per row on mobile with 60FPS High Performance Overrides */
   .product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 14px !important;
@@ -1552,16 +1563,20 @@ footer {
 
   .product-card {
     border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.9);
     border-top: 1.5px solid #ffffff;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05) !important;
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 320px;
   }
 
   .card-image-wrapper {
     padding: 10px;
     aspect-ratio: 3 / 4;
+    background: #f8fafc !important;
   }
 
   .card-badge {
@@ -1662,6 +1677,9 @@ footer {
 
   .controls-row {
     padding: 12px;
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 }
 
