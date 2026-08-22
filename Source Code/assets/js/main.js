@@ -682,16 +682,52 @@ document.addEventListener('DOMContentLoaded', () => {
   updateWishlistBadge();
 });
 
-// 4. EVENT LISTENERS
+// 4. EVENT LISTENERS & CATEGORY SELECTION
+function setActiveCategory(category) {
+  state.currentCategory = category;
+
+  // Sync Catalog Filter Pills
+  const filterBtns = document.querySelectorAll('.filter-pill');
+  filterBtns.forEach(btn => {
+    if (btn.getAttribute('data-category') === category) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  // Sync Header Nav Links
+  const navLinks = document.querySelectorAll('.nav-links a.nav-link-item');
+  navLinks.forEach(link => {
+    const cat = link.getAttribute('data-category');
+    if (cat === category || (category === 'all' && cat === 'all')) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+
+  renderProducts();
+}
+
 function setupEventListeners() {
   // Category Filter Pills
   const filterBtns = document.querySelectorAll('.filter-pill');
   filterBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      e.target.classList.add('active');
-      state.currentCategory = e.target.getAttribute('data-category');
-      renderProducts();
+      const cat = e.currentTarget.getAttribute('data-category');
+      if (cat) setActiveCategory(cat);
+    });
+  });
+
+  // Header Nav Links
+  const navLinks = document.querySelectorAll('.nav-links a.nav-link-item');
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const cat = e.currentTarget.getAttribute('data-category');
+      if (cat && cat !== 'business') {
+        setActiveCategory(cat);
+      }
     });
   });
 

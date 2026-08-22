@@ -34,12 +34,12 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="#catalog" class="active">New Arrivals</a></li>
-        <li><a href="#catalog" onclick="document.querySelector('[data-category=streetwear]').click()">Streetwear</a></li>
-        <li><a href="#catalog" onclick="document.querySelector('[data-category=oversized]').click()">Oversized</a></li>
-        <li><a href="#catalog" onclick="document.querySelector('[data-category=y2k]').click()">Y2K Vintage</a></li>
-        <li><a href="#catalog" onclick="document.querySelector('[data-category=minimalist]').click()">Minimalist</a></li>
-        <li><a href="#business">Smart Invoicing</a></li>
+        <li><a href="#catalog" onclick="setActiveCategory('all')" class="nav-link-item active" data-category="all">New Arrivals</a></li>
+        <li><a href="#catalog" onclick="setActiveCategory('streetwear')" class="nav-link-item" data-category="streetwear">Streetwear</a></li>
+        <li><a href="#catalog" onclick="setActiveCategory('oversized')" class="nav-link-item" data-category="oversized">Oversized</a></li>
+        <li><a href="#catalog" onclick="setActiveCategory('y2k')" class="nav-link-item" data-category="y2k">Y2K Vintage</a></li>
+        <li><a href="#catalog" onclick="setActiveCategory('minimalist')" class="nav-link-item" data-category="minimalist">Minimalist</a></li>
+        <li><a href="#business" class="nav-link-item" data-category="business">Smart Invoicing</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -423,10 +423,10 @@
         <div>
           <h4 class="footer-title">Collections</h4>
           <ul class="footer-links">
-            <li><a href="#catalog" onclick="document.querySelector('[data-category=streetwear]').click()">Streetwear Drops</a></li>
-            <li><a href="#catalog" onclick="document.querySelector('[data-category=oversized]').click()">Heavyweight Oversized</a></li>
-            <li><a href="#catalog" onclick="document.querySelector('[data-category=y2k]').click()">Y2K Vintage Acid Wash</a></li>
-            <li><a href="#catalog" onclick="document.querySelector('[data-category=minimalist]').click()">Minimalist Essentials</a></li>
+            <li><a href="#catalog" onclick="setActiveCategory('streetwear')">Streetwear Drops</a></li>
+            <li><a href="#catalog" onclick="setActiveCategory('oversized')">Heavyweight Oversized</a></li>
+            <li><a href="#catalog" onclick="setActiveCategory('y2k')">Y2K Vintage Acid Wash</a></li>
+            <li><a href="#catalog" onclick="setActiveCategory('minimalist')">Minimalist Essentials</a></li>
           </ul>
         </div>
 

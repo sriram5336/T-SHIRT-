@@ -203,38 +203,32 @@ button {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 16px;
   list-style: none;
 }
 
 .nav-links a {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: #475569;
   transition: var(--transition);
   position: relative;
-  padding: 6px 14px;
+  padding: 8px 18px;
   border-radius: var(--radius-full);
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+.nav-links a:hover {
   color: var(--primary);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.85);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
 }
 
-.nav-links a.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 3px;
-  background: var(--primary);
-  border-radius: 3px;
-  box-shadow: 0 0 8px var(--primary);
+.nav-links a.active {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, var(--primary), #4f46e5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
+  font-weight: 700;
 }
 
 .nav-actions {
